@@ -1,8 +1,10 @@
 # 1. Use an official, lightweight Python stable base image
 FROM python:3.10-slim
 
-# 2. Install essential system dependencies required for OpenCV and image/video rendering
-RUN apt-get clean && apt-get update --fix-missing && apt-get install -y --no-install-recommends \
+# 2. Fix mirrors to use reliable global archives and install essential system dependencies
+RUN sed -i 's/deb.debian.org/ftp.us.debian.org/g' /etc/apt/sources.list && \
+    sed -i 's/security.debian.org/ftp.us.debian.org/g' /etc/apt/sources.list && \
+    apt-get update && apt-get install -y --no-install-recommends \
     libgl1-mesa-glx \
     libglib2.0-0 \
     && rm -rf /var/lib/apt/lists/*
