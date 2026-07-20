@@ -21,8 +21,8 @@ COPY src/ ./src
 
 # 7. Copy root level configurations, execution entry scripts, and verified weights
 COPY data.yaml .
-COPY main.py .
+COPY xVision_main.py .
 COPY yolov8s.pt .
 
 # 8. Define the default runtime command to execute the main tracking application via CLI flags
-CMD ["python", "main.py", "--task", "track"]
+CMD ["python", "xVision_main.py", "--task", "track"]
