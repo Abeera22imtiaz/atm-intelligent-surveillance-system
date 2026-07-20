@@ -13,8 +13,10 @@ WORKDIR /app
 # 4. Copy the requirements file first to optimize Docker layer caching for dependencies
 COPY requirements.txt .
 
-# 5. Install Python dependencies without caching the installer files to reduce image size
-RUN pip install --no-cache-dir -r requirements.txt
+
+# 5. Upgrade pip and install Python dependencies safely
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir --prefer-binary -r requirements.txt
 
 # 6. Copy core modular scripts directory (Contains config, tracker, trainer, etc.)
 COPY src/ ./src
