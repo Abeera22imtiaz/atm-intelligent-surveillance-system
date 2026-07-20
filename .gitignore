@@ -1,0 +1,33 @@
+# ==========================================
+# 1. Datasets & Heavy Training Outputs
+# ==========================================
+final_dataset/
+final_datasets/
+runs/
+
+# ==========================================
+# 2. Media Files (Raw and Tracked Videos)
+# ==========================================
+*.mp4
+atm20260525_135421.mp4
+atms.mp4
+new.mp4
+output_tracked.mp4
+
+# ==========================================
+# 3. Unused/Extra Heavy Model Weights
+# ==========================================
+yolov8n.pt
+yolo26n.pt
+
+# ==========================================
+# 4. Python Caches & Jupyter Checkpoints
+# ==========================================
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# ==========================================
+# 5. Temporary / Junk Files
+# ==========================================
+trash_report.txt

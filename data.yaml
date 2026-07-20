@@ -1,0 +1,8 @@
+path: /content/drive/MyDrive/ATM_Surveillance_Project/final_dataset
+train: train/images
+val: val/images
+test: test/images
+nc: 2
+names:
+  0: trash
+  1: person
