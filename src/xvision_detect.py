@@ -3,15 +3,15 @@ from ultralytics import YOLO
 from src.config import BASE_PATH, VIDEO_SOURCE
 
 def run_atms_detection():
-    # 1. Model path define karein
+    # 1. Define model path
     model_path = os.path.join(BASE_PATH, "runs", "atm_surveillance_run", "weights", "best.pt")
     
     if not os.path.exists(model_path):
         print(f"Error: Model file not found at {model_path}")
         return
 
-    # 2. Permanent Save Path (Drive folder)
-    # Note: Google Drive notebook mein pehle se mount honi chahiye
+    # 2. Permanent save path (Google Drive folder)
+    # Note: Google Drive must be mounted before running the notebook
     output_project = "/content/drive/MyDrive/ATM_Surveillance_Results"
     output_dir_name = "detection_output_v1"
     
@@ -32,11 +32,11 @@ def run_atms_detection():
         project=output_project,
         name=output_dir_name,
         exist_ok=True,
-        verbose=False,     # Terminal spam rukne ke liye
-        vid_stride=3           # Har 3rd frame process hoga (Memory load kam karne ke liye)
+        verbose=False,     # Prevent excessive terminal logs
+        vid_stride=3       # Process every 3rd frame to reduce memory usage
     )
     
-    # 4. Iteration loop
+    # 4. Iterate through detection results
     for i, r in enumerate(results):
         if i % 50 == 0:
             print(f"Processing frame {i}...")
